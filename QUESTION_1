@@ -1,0 +1,5 @@
+-- 1) Write an SQL query to transform given input data into the expected output. Output can be sorted in any order.
+			
+select d1.driver1, d2.driver2 from drivers d1 full outer join drivers d2
+on d1.driver1 = d2.driver2
+order by 1;
