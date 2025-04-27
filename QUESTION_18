@@ -1,0 +1,4 @@
+-- 18) Identify the devices used by each student.						
+
+select s.student_id, group_concat(distinct device separator ", ") as devices from devices d join student_devices s on d.id = s.device_id
+group by s.student_id;
