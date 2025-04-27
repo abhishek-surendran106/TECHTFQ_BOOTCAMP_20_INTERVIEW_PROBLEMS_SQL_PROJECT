@@ -1,0 +1,6 @@
+-- 7) Identify the 2 most ordered items by Thoufiq														
+
+select item from (
+select item, count(*), rank() over (order by count(*) desc) as rnk from cafe_orders
+group by item) as temp
+where rnk <=2;
