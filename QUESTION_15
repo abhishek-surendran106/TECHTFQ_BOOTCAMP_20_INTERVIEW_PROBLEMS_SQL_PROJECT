@@ -1,0 +1,7 @@
+-- 15) Find how many students are still present in the bootcamp class after the first 30 mins mark each day.								
+								
+select date(login_time) as login_time, sum(flag) as active_students_post_30_mins from
+(select *, if(time(login_time) < break_time, 1,0) as flag from
+(select *, addtime(start_time, "00:30:00") as break_time from 
+bootcamp_attendance ba join bootcamp_timing bt on date(ba.login_time) = bt.day) as temp) as sub
+group by 1;
