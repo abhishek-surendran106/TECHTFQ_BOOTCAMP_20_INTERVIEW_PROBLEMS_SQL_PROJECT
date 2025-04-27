@@ -1,0 +1,6 @@
+-- 5) Delete duplicate user entries. Only the first entry made by each user must be kept.															
+															
+select id, user_name, email from (
+select *, row_number() over (partition by user_name order by id) as rn from user_entries) as temp
+where rn = 1
+order by id;
