@@ -1,0 +1,11 @@
+-- 3) Identify the student who always outscored themselves in each semester.														
+
+with next_perc as
+(select *, lead(percentage) over (partition by student_name order by semester) as next_perc from student_marks),
+flag as
+(select student_name, semester, if(percentage < next_perc,1,0) as flag from next_perc),
+final as
+(select student_name, sum(flag) as outperformance from flag
+group by student_name
+having sum(flag) >= (select count(distinct semester) - 1 from student_marks))
+select student_name from final;
