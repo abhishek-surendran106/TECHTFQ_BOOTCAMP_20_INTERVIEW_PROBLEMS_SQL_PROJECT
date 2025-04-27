@@ -1,0 +1,7 @@
+-- 6) Identify the countries present in multiple continents									
+
+select country from (
+select country, count(distinct continent) as multiple_conti
+from countries
+group by country
+having count(distinct continent) > 1) as temp;
