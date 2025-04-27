@@ -1,0 +1,3 @@
+-- 14) Sort input data as per expected output					
+					
+select * from words order by substring(word, -1);
