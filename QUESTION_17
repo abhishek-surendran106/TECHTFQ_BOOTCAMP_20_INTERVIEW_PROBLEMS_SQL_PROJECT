@@ -1,0 +1,15 @@
+-- 17) Derive the desired output using input table									
+
+SELECT
+  CASE
+    WHEN first_name IS NOT NULL AND middle_name IS NOT NULL AND last_name IS NOT NULL THEN CONCAT(first_name, '-', middle_name, '-', last_name)
+    WHEN first_name IS NOT NULL AND middle_name IS NOT NULL AND last_name IS NULL THEN CONCAT(first_name, '-', middle_name)
+    WHEN first_name IS NOT NULL AND middle_name IS NULL AND last_name IS NOT NULL THEN CONCAT(first_name, '-', last_name)
+    WHEN first_name IS NOT NULL AND middle_name IS NULL AND last_name IS NULL THEN first_name
+    WHEN first_name IS NULL AND middle_name IS NULL AND last_name IS NOT NULL THEN last_name
+  END AS cust_name
+FROM cust_names
+WHERE 
+  first_name IS NOT NULL 
+  OR middle_name IS NOT NULL 
+  OR last_name IS NOT NULL;
