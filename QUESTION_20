@@ -1,0 +1,16 @@
+-- 20) -- Analyse the feedback given for the SQL bootcamp conducted by techTFQ and display the following:
+	-- Overall ratiing (rounded off to 2 decimal points)
+	-- no of 5* rating
+	-- no of 4* rating
+	-- no of 3* rating
+	-- no of 2* rating
+	-- no of 1* rating
+
+SELECT 
+  ROUND(AVG(rating),2) AS Overall_Rating,
+  SUM(CASE WHEN rating = 5 THEN 1 ELSE 0 END) AS "5*_Rating",
+  SUM(CASE WHEN rating = 4 THEN 1 ELSE 0 END) AS "4*_Rating",
+  SUM(CASE WHEN rating = 3 THEN 1 ELSE 0 END) AS "3*_Rating",
+  SUM(CASE WHEN rating = 2 THEN 1 ELSE 0 END) AS "2*_Rating",
+  SUM(CASE WHEN rating = 1 THEN 1 ELSE 0 END) AS "1*_Rating"
+FROM techTFQ_feedback;
