@@ -1,0 +1,7 @@
+-- 9) Corresponding to each salesman, display their total customer count as represented below.																	
+
+with num as
+(select salesman, customer, row_number() over (partition by salesman) rn1 from sales_team),
+tot as
+(select *, count(rn1) over (partition by salesman) as tot from num)
+select salesman, customer, concat(rn1," of ", tot) as total_customers from tot;
