@@ -1,0 +1,6 @@
+-- 19) Identify the subject which is thought in each semester				
+				
+select subject from (
+select s.subject, count(distinct ss.semester) as cnt from subjects s join sem_subjects ss on s.id = ss.subject
+group by s.subject
+having count(distinct ss.semester) = (select count(distinct semester) from sem_subjects)) as temp;
