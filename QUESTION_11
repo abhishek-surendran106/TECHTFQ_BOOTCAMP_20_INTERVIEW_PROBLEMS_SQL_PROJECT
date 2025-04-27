@@ -1,0 +1,5 @@
+-- 11)"Write an SQL query to display the correct message (meaningful message) from the input
+comments_and_translation table."								
+								
+select case
+when translation is null then comment else translation end as output from comments_and_translations;
