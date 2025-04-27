@@ -1,0 +1,10 @@
+-- 13) Find the average rides taken by each user in the last 30 days. Only rides marked as completed or without status must be considered.									
+									
+select * from taxi_rides;
+with total_rides as
+(select count(*) as tot_rides from taxi_rides
+where status = 'Completed' or status IS NULL
+and dates > "2025-03-26"),
+cust as
+(select count(distinct user_id) as number_of_customers from taxi_rides)
+select round(tot_rides/number_of_customers,2) as average_rides from total_rides, cust;
