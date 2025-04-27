@@ -1,0 +1,6 @@
+-- 8)Identify data belonging to incorrect branch														
+													
+select bd.id, bd.name, bd.branch, bd.customer_count, bd.employee_count from bank_details bd left join branch b
+on bd.branch = b.id
+where b.id is null;
+
