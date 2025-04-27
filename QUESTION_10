@@ -1,0 +1,11 @@
+-- 10) For the given 4 IPL teams, come up with a schedule for each team to play with all other teams (once as home team and then as away team)									
+									
+with home as
+(select team as home_team from ipl_teams),
+away as
+(select team as away_team from ipl_teams),
+schedule as
+(select * from home h cross join away a)
+select * from schedule
+where home_team != away_team
+order by home_team, away_team;
