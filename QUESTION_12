@@ -1,0 +1,7 @@
+-- 12) Given the list of skills from different candidates. We need to find the candidate that possesses all the required skills								
+								
+select employee from (
+select employee, count(distinct skillset) as skills_count from skills s join required_skills rs on s.skillset = rs.skills
+group by employee
+order by skills_count desc) as temp
+where skills_count = (select count(*) from required_skills);
