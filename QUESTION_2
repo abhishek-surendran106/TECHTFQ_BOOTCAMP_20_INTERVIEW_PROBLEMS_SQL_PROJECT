@@ -1,0 +1,4 @@
+-- 2) Write an SQL query to transform given input data into the expected output. Output can be sorted in any order.											
+											
+SELECT * FROM all_names
+WHERE names REGEXP '[!0-9?.]';
